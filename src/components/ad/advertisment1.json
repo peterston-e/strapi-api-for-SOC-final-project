@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_ad_advertisment1s",
+  "info": {
+    "displayName": "advertisment",
+    "icon": "",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

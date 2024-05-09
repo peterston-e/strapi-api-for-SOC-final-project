@@ -4,60 +4,67 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article"
+    "displayName": "article",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Headline": {
+    "headline": {
       "type": "string",
       "required": true
     },
-    "Content": {
-      "type": "blocks"
-    },
-    "Media": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
-    },
-    "ImageCaption": {
-      "type": "blocks"
-    },
-    "ArticleSummary": {
-      "type": "text",
+    "copy": {
+      "type": "blocks",
       "required": true
     },
-    "Advertisement1": {
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
+    "image": {
       "type": "media",
-      "multiple": true
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "Advertisement2": {
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
-      "type": "media",
-      "multiple": true
+    "description": {
+      "type": "text"
     },
-    "Advertisement3": {
-      "allowedTypes": [
-        "images",
-        "files"
+    "ad1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ad.advertisment1"
+    },
+    "ad2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ad.advertisment1"
+    },
+    "ad3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ad.advertisment1"
+    },
+    "ad5": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ad.advertisment1"
+    },
+    "ad4": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ad.advertisment1"
+    },
+    "section": {
+      "type": "enumeration",
+      "enum": [
+        "news",
+        "features",
+        "insights",
+        "five"
       ],
-      "type": "media",
-      "multiple": true
+      "default": "news"
     }
   }
 }

@@ -362,43 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Headline: Attribute.String & Attribute.Required;
-    Content: Attribute.Blocks;
-    Media: Attribute.Media;
-    ImageCaption: Attribute.Blocks;
-    ArticleSummary: Attribute.Text & Attribute.Required;
-    Advertisement1: Attribute.Media;
-    Advertisement2: Attribute.Media;
-    Advertisement3: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -825,6 +788,81 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiArchiveArchive extends Schema.CollectionType {
+  collectionName: 'archives';
+  info: {
+    singularName: 'archive';
+    pluralName: 'archives';
+    displayName: 'archive';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    magazine: Attribute.Media & Attribute.Required;
+    topstory1: Attribute.Component<'topstories.story'> & Attribute.Required;
+    topstory2: Attribute.Component<'topstories.story'> & Attribute.Required;
+    topstory3: Attribute.Component<'topstories.story'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::archive.archive',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::archive.archive',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headline: Attribute.String & Attribute.Required;
+    copy: Attribute.Blocks & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    description: Attribute.Text;
+    ad1: Attribute.Component<'ad.advertisment1'>;
+    ad2: Attribute.Component<'ad.advertisment1'>;
+    ad3: Attribute.Component<'ad.advertisment1'>;
+    ad5: Attribute.Component<'ad.advertisment1'>;
+    ad4: Attribute.Component<'ad.advertisment1'>;
+    section: Attribute.Enumeration<['news', 'features', 'insights', 'five']> &
+      Attribute.DefaultTo<'news'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -835,7 +873,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::article.article': ApiArticleArticle;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -844,6 +881,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::archive.archive': ApiArchiveArchive;
+      'api::article.article': ApiArticleArticle;
     }
   }
 }
