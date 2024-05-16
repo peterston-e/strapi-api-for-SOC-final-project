@@ -801,9 +801,6 @@ export interface ApiArchiveArchive extends Schema.CollectionType {
   };
   attributes: {
     magazine: Attribute.Media & Attribute.Required;
-    topstory1: Attribute.Component<'topstories.story'> & Attribute.Required;
-    topstory2: Attribute.Component<'topstories.story'> & Attribute.Required;
-    topstory3: Attribute.Component<'topstories.story'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -838,13 +835,19 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     copy: Attribute.Blocks & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
     description: Attribute.Text;
-    ad1: Attribute.Component<'ad.advertisment1'>;
-    ad2: Attribute.Component<'ad.advertisment1'>;
-    ad3: Attribute.Component<'ad.advertisment1'>;
-    ad5: Attribute.Component<'ad.advertisment1'>;
-    ad4: Attribute.Component<'ad.advertisment1'>;
     section: Attribute.Enumeration<['news', 'features', 'insights', 'five']> &
       Attribute.DefaultTo<'news'>;
+    subheading: Attribute.Text & Attribute.Required;
+    ad1: Attribute.Media;
+    ad2: Attribute.Media;
+    ad3: Attribute.Media;
+    ad4: Attribute.Media;
+    ad5: Attribute.Media;
+    ad1Link: Attribute.String;
+    ad2Link: Attribute.String;
+    ad3Link: Attribute.String;
+    ad4Link: Attribute.String;
+    ad5Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -859,6 +862,177 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFeatureFeature extends Schema.CollectionType {
+  collectionName: 'features';
+  info: {
+    singularName: 'feature';
+    pluralName: 'features';
+    displayName: 'Features & Analysis';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headline: Attribute.String & Attribute.Required;
+    subheading: Attribute.Text & Attribute.Required;
+    description: Attribute.Text;
+    image: Attribute.Media & Attribute.Required;
+    copy: Attribute.Blocks & Attribute.Required;
+    ad1: Attribute.Media;
+    ad2: Attribute.Media;
+    ad3: Attribute.Media;
+    ad4: Attribute.Media;
+    ad5: Attribute.Media;
+    ad1Link: Attribute.String;
+    ad2Link: Attribute.String;
+    ad3Link: Attribute.String;
+    ad4Link: Attribute.String;
+    ad5Link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::feature.feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::feature.feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFiveMinutesWithFiveMinutesWith
+  extends Schema.CollectionType {
+  collectionName: 'five_minutes_withs';
+  info: {
+    singularName: 'five-minutes-with';
+    pluralName: 'five-minutes-withs';
+    displayName: 'Five Minutes With';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headline: Attribute.String & Attribute.Required;
+    subheading: Attribute.Text & Attribute.Required;
+    description: Attribute.Text;
+    image: Attribute.Media & Attribute.Required;
+    copy: Attribute.Blocks & Attribute.Required;
+    ad1: Attribute.Media;
+    ad2: Attribute.Media;
+    ad3: Attribute.Media;
+    ad4: Attribute.Media;
+    ad5: Attribute.Media;
+    ad1Link: Attribute.String;
+    ad2Link: Attribute.String;
+    ad3Link: Attribute.String;
+    ad4Link: Attribute.String;
+    ad5Link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::five-minutes-with.five-minutes-with',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::five-minutes-with.five-minutes-with',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInsightInsight extends Schema.CollectionType {
+  collectionName: 'insights';
+  info: {
+    singularName: 'insight';
+    pluralName: 'insights';
+    displayName: 'Insights';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headline: Attribute.String & Attribute.Required;
+    subheading: Attribute.Text & Attribute.Required;
+    description: Attribute.Text;
+    image: Attribute.Media & Attribute.Required;
+    copy: Attribute.Blocks & Attribute.Required;
+    ad1: Attribute.Media;
+    ad2: Attribute.Media;
+    ad3: Attribute.Media;
+    ad4: Attribute.Media;
+    ad5: Attribute.Media;
+    ad1Link: Attribute.String;
+    ad2Link: Attribute.String;
+    ad3Link: Attribute.String;
+    ad4Link: Attribute.String;
+    ad5Link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::insight.insight',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::insight.insight',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNewNew extends Schema.CollectionType {
+  collectionName: 'news';
+  info: {
+    singularName: 'new';
+    pluralName: 'news';
+    displayName: 'News';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headline: Attribute.String & Attribute.Required;
+    subheading: Attribute.Text & Attribute.Required;
+    description: Attribute.Text;
+    image: Attribute.Media & Attribute.Required;
+    copy: Attribute.Blocks & Attribute.Required;
+    ad1: Attribute.Media;
+    ad2: Attribute.Media;
+    ad3: Attribute.Media;
+    ad4: Attribute.Media;
+    ad5: Attribute.Media;
+    ad1Link: Attribute.String;
+    ad2Link: Attribute.String;
+    ad3Link: Attribute.String;
+    ad4Link: Attribute.String;
+    ad5Link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -883,6 +1057,10 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::archive.archive': ApiArchiveArchive;
       'api::article.article': ApiArticleArticle;
+      'api::feature.feature': ApiFeatureFeature;
+      'api::five-minutes-with.five-minutes-with': ApiFiveMinutesWithFiveMinutesWith;
+      'api::insight.insight': ApiInsightInsight;
+      'api::new.new': ApiNewNew;
     }
   }
 }

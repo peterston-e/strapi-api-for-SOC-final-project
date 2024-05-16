@@ -19,24 +19,6 @@
       "allowedTypes": [
         "files"
       ]
-    },
-    "topstory1": {
-      "type": "component",
-      "repeatable": false,
-      "component": "topstories.story",
-      "required": true
-    },
-    "topstory2": {
-      "type": "component",
-      "repeatable": false,
-      "component": "topstories.story",
-      "required": true
-    },
-    "topstory3": {
-      "type": "component",
-      "repeatable": false,
-      "component": "topstories.story",
-      "required": true
     }
   }
 }

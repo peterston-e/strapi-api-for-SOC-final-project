@@ -11,6 +11,8 @@ Do not use any others this is it!
 
 ## 💁‍♀️ How to use
 
+- dev mode: railway run npm run develop
+
 - Click the Railway button 👆
 - Add the environment variables
   - If you choose not to add the Cloudinary related environment variables, your media will not be persisted between deploys.

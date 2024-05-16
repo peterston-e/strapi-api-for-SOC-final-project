@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "features",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "article",
-    "description": ""
+    "singularName": "feature",
+    "pluralName": "features",
+    "displayName": "Features & Analysis"
   },
   "options": {
     "draftAndPublish": true
@@ -16,33 +15,23 @@
       "type": "string",
       "required": true
     },
-    "copy": {
-      "type": "blocks",
+    "subheading": {
+      "type": "text",
       "required": true
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
     },
     "description": {
       "type": "text"
     },
-    "section": {
-      "type": "enumeration",
-      "enum": [
-        "news",
-        "features",
-        "insights",
-        "five"
+    "image": {
+      "allowedTypes": [
+        "images"
       ],
-      "default": "news"
+      "type": "media",
+      "multiple": false,
+      "required": true
     },
-    "subheading": {
-      "type": "text",
+    "copy": {
+      "type": "blocks",
       "required": true
     },
     "ad1": {
@@ -57,7 +46,8 @@
         "images"
       ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false
     },
     "ad3": {
       "allowedTypes": [
