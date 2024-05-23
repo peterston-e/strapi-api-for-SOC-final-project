@@ -793,14 +793,15 @@ export interface ApiArchiveArchive extends Schema.CollectionType {
   info: {
     singularName: 'archive';
     pluralName: 'archives';
-    displayName: 'archive';
-    description: '';
+    displayName: 'Archive';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    magazine: Attribute.Media & Attribute.Required;
+    magazinePDF: Attribute.String & Attribute.Required;
+    magazinecover: Attribute.Media & Attribute.Required;
+    issue: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -862,6 +863,31 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBbtvBbtv extends Schema.CollectionType {
+  collectionName: 'bbtvs';
+  info: {
+    singularName: 'bbtv';
+    pluralName: 'bbtvs';
+    displayName: 'bbtv';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    link: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::bbtv.bbtv', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::bbtv.bbtv', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1057,6 +1083,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::archive.archive': ApiArchiveArchive;
       'api::article.article': ApiArticleArticle;
+      'api::bbtv.bbtv': ApiBbtvBbtv;
       'api::feature.feature': ApiFeatureFeature;
       'api::five-minutes-with.five-minutes-with': ApiFiveMinutesWithFiveMinutesWith;
       'api::insight.insight': ApiInsightInsight;

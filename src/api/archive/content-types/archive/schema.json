@@ -4,21 +4,28 @@
   "info": {
     "singularName": "archive",
     "pluralName": "archives",
-    "displayName": "archive",
-    "description": ""
+    "displayName": "Archive"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "magazine": {
+    "magazinePDF": {
+      "type": "string",
+      "required": true
+    },
+    "magazinecover": {
+      "allowedTypes": [
+        "images"
+      ],
       "type": "media",
       "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "files"
-      ]
+      "required": true
+    },
+    "issue": {
+      "type": "string",
+      "required": true
     }
   }
 }
