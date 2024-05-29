@@ -1063,6 +1063,37 @@ export interface ApiNewNew extends Schema.CollectionType {
   };
 }
 
+export interface ApiSampleSample extends Schema.CollectionType {
+  collectionName: 'samples';
+  info: {
+    singularName: 'sample';
+    pluralName: 'samples';
+    displayName: 'Sample';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    simpletext: Attribute.String & Attribute.Required;
+    textbox: Attribute.Blocks & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sample.sample',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sample.sample',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1088,6 +1119,7 @@ declare module '@strapi/types' {
       'api::five-minutes-with.five-minutes-with': ApiFiveMinutesWithFiveMinutesWith;
       'api::insight.insight': ApiInsightInsight;
       'api::new.new': ApiNewNew;
+      'api::sample.sample': ApiSampleSample;
     }
   }
 }
